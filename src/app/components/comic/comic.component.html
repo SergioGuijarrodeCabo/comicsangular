@@ -4,7 +4,7 @@
     <h2>{{comic.titulo}}</h2>
     <h3>{{comic.descripcion}}</h3>
     <img src="{{comic.imagen}}" class="imagen">
-    <button (click)="marcarFavorito()">Seleccionar favorito</button>
+    <button (click)="marcarFavorito()" class="btn btn-warning">Seleccionar favorito</button>
     <button (click)="updateComic()">Modificar</button>
     <button (click)="deleteComic()">Borrar</button>
 </div>
