@@ -1,37 +1,39 @@
 import { Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { ComicComponent } from '../components/comic/comic.component';
 import  { ViewChild, ElementRef } from '@angular/core'; 
- 
+import { comicModel } from 'src/models/comicModel';
 
 @Component({
   selector: 'app-libreria',
   templateUrl: './libreria.component.html'
 })
 export class LibreriaComponent implements OnInit {
-
-    public comics: Array<any>;
+    public comicFavorito!: comicModel;
+    public comics: Array<comicModel>;
     public comic: any;
-    @ViewChild("cajatitulo") cajatitulo: ElementRef; 
+    @ViewChild("cajatitulo") cajatitulo!: ElementRef; 
+    @ViewChild("cajaimagen") cajaimagen!: ElementRef;
+    @ViewChild("cajadescripcion") cajadescripcion!: ElementRef; 
 
-    @ViewChild("cajaimagen") cajaimagen: ElementRef;
-    @ViewChild("cajadescripcion") cajadescripcion: ElementRef; 
+    //AL MODIFICAR EN EL HIJO, RECIBIMOS EL INDEX A MODIFICAR
 
-    
-  //@Input() sport!: string;
+    modificarComic(i: number): void{
 
-  //VAMOS A RECIBIR UN MÉTODO DEL PADRE MEDIANTE props
+      this.cajatitulo.nativeElement.value = this.comics[i].titulo;
+      this.cajaimagen.nativeElement.value = this.comics[i].imagen;
+      this.cajadescripcion.nativeElement.value = this.comics[i].descripcion;
 
-  //@Output() seleccionarDeportePadre: EventEmitter<any> = new EventEmitter;
+     
+      
+    }
+
+    eliminarComic(i: number): void{
+    this.comics.splice(i, 1);
+    }
+
+
 
   constructor() { 
-    this.cajatitulo = new ElementRef(0);
-    this.cajadescripcion = new ElementRef(0);
-    this.cajaimagen = new ElementRef(0);
-
-    this.comic = {
-      titulo: this.cajatitulo.nativeElement.value,
-      imagen: this.cajatitulo.nativeElement.value,
-      descripcion: this.cajatitulo.nativeElement.value};
 
     this.comics = [
         {
@@ -79,13 +81,27 @@ export class LibreriaComponent implements OnInit {
   }
 
 
+  seleccionarFavorito(event: comicModel):void{
+    this.comicFavorito = event;
+  }
+
+
   addComic() {
+    
+    this.comic = {
+      titulo: this.cajatitulo.nativeElement.value,
+      imagen: this.cajatitulo.nativeElement.value,
+      descripcion: this.cajatitulo.nativeElement.value};
+
+
     this.comics.push(this.comic);
 
   }
   ngOnInit(): void {
     
   }
+
+  
 
 
 
