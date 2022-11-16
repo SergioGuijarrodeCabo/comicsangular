@@ -9,8 +9,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { ComicsInyeccion } from './components/comicsinyeccion/comicsinyeccion.component';
 import { ComicsService } from './services/service.comics';
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { PersonasApi } from './components/personasapi/personasapi.component';
+import { PersonasService } from './services/personas.service';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,15 @@ import { ComicsService } from './services/service.comics';
     MenuComponent,
     HomeComponent,
     ComicsInyeccion,  
+    PersonasApi
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     routing,
     FormsModule
   ],
-  providers: [appRoutingProviders, ComicsService],
+  providers: [appRoutingProviders, ComicsService, PersonasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
