@@ -5,6 +5,10 @@ import { LibreriaComponent } from './components/libreria/libreria.component';
 import { ModuleWithProviders } from '@angular/core';
 import { ComicsInyeccion } from './components/comicsinyeccion/comicsinyeccion.component';
 import { PersonasApi } from './components/personasapi/personasapi.component';
+import { EmpleadosSalario } from './components/empleadossalario/empleadossalario.component';
+import { EmpleadosOficios } from './components/oficios/empleadosoficios.component'
+import { PlantillaComponent } from './components/plantilla/plantilla.component';
+
 const routes: Routes = [
 {
   path: "", component: HomeComponent
@@ -19,7 +23,18 @@ const routes: Routes = [
 
 {
   path: "personasapi", component: PersonasApi
-}
+},
+{
+  path: "empleadossalario", component: EmpleadosSalario
+},
+
+ {
+  path: "empleadosoficios", component: EmpleadosOficios
+ },
+
+ {
+  path: "plantilla", component: PlantillaComponent
+ }
 
 
 ];

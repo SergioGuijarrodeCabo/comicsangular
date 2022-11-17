@@ -1,0 +1,40 @@
+<div>
+   
+
+    <form #formplantillas="ngForm" (ngSubmit)="mostrarEmpleadosFunciones()">
+        <label>Seleccione una función</label>
+        <select  name="selectFuncion" multiple [(ngModel)]="funcionesSelect">
+            <option *ngFor="let funcion of funciones" [value]="funcion">{{funcion}}</option>
+        </select>   
+      <button>MOSTRAR</button>
+    </form>
+
+
+
+    <table class="table table-info table-bordered" *ngIf="plantillas">
+        <thead>
+            <tr>
+                <th>idEmpleado</th>
+                <th>idHospital</th>
+                <th>idSala</th>
+                <th>apellido</th>
+                <th>funcion</th>
+                <th>turno</th>
+                <th>salario</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr *ngFor="let plantilla of plantillas">
+            <td>{{plantilla.idEmpleado}}</td>
+            <td>{{plantilla.idHospital}}</td>
+            <td>{{plantilla.idSala}}</td>
+            <td>{{plantilla.apellido}}</td>
+            <td>{{plantilla.funcion}}</td>
+            <td>{{plantilla.turno}}</td>
+            <td>{{plantilla.salario}}</td>
+
+        </tr>
+
+
+    </table>
+</div>
